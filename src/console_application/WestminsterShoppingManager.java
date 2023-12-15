@@ -1,6 +1,8 @@
 package console_application;
 
 
+import java.util.Scanner;
+
 /**
  COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
  Object-Oriented Programming Coursework L5 sem 1
@@ -9,18 +11,19 @@ package console_application;
  */
 
 /**
- * This class contains amin method of the program .
+ * This class contains main method of the program .
  * This class is responsible for managing all actions within the program.
  */
 public class WestminsterShoppingManager
 {
     /**
      * main method of the
-     * @param args
+     * @param args any arguments pass to the main method.
      */
 
     public static void main(String[] args)
     {
+        Scanner
 
 
     }
