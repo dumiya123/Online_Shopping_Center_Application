@@ -25,10 +25,19 @@ public class WestminsterShoppingManager
     {
         Scanner sc=new Scanner(System.in);
 
+        while(true)
+        {
+            System.out.println("\nEnter Your Option: ");
+            String usrInput= sc.next().toUpperCase();
+        }
+
+
 
 
 
     }
+
+
 
 
 
