@@ -53,7 +53,7 @@ public class WestminsterShoppingManager
                 A: ADD NEW PRODUCT
                 B: DELETE PRODUCT
                 C: VIEW PRODUCT LIST
-                D: 
+                D: SAVE DETAILS IN TO A FILE
                                          
                 
                 
