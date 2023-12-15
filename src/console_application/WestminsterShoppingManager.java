@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class WestminsterShoppingManager
 {
     private final int maximum_products = 50;
-    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Electronics> products = new ArrayList<Electronics>();
 
 
 
@@ -108,7 +108,7 @@ public class WestminsterShoppingManager
         switch (productType)
         {
             case "electronics":
-                add_Electronic_Product();
+
             case "clothing":
 
 
@@ -119,38 +119,7 @@ public class WestminsterShoppingManager
 
     }
 
-    private void add_Electronic_Product()
-    {
 
-        Scanner scanner = new Scanner(System.in);
-        int productId, warrantyYears;
-        String name, brand;
-        double price;
-
-        System.out.println("Enter product ID: ");
-        productId = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("Enter product name: ");
-        name = scanner.nextLine();
-
-        System.out.println("Enter product brand: ");
-        brand = scanner.nextLine();
-
-        System.out.println("Enter product price: ");
-        price = scanner.nextDouble();
-
-        System.out.println("Enter warranty years: ");
-        warrantyYears = scanner.nextInt();
-
-        Electronics newProduct = new Electronics(productId, name, brand, price, warrantyYears);
-        products.add(newProduct);
-        System.out.println(String.format("Product '%s' added successfully.", name));
-
-
-
-
-    }
 
 
 
