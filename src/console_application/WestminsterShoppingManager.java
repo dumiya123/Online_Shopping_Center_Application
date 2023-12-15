@@ -108,10 +108,8 @@ public class WestminsterShoppingManager
         switch (productType)
         {
             case "electronics":
-
-
-
-
+                add_Electronic_Product();
+            case "clothing":
 
 
 
