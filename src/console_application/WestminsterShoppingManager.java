@@ -52,7 +52,8 @@ public class WestminsterShoppingManager
                 M: SHOW MENU
                 A: ADD NEW PRODUCT
                 B: DELETE PRODUCT
-                C: 
+                C: VIEW PRODUCT LIST
+                D: 
                                          
                 
                 
