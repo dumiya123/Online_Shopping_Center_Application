@@ -18,6 +18,8 @@ public class WestminsterShoppingManager
 {
     private final int maximum_products = 50;
 
+
+
     /**
      * main method of the
      * @param args any arguments pass to the main method.
