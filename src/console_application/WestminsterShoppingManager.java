@@ -23,7 +23,8 @@ public class WestminsterShoppingManager
 
     public static void main(String[] args)
     {
-        Scanner
+        Scanner sc=new Scanner(System.in);
+
 
 
     }
