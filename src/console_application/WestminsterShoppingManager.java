@@ -37,6 +37,26 @@ public class WestminsterShoppingManager
 
     }
 
+    /**
+     * showMenu() method will display the menu to the user.
+     */
+
+    public void showMenu()
+    {
+        System.out.println("""
+                
+                ---------------------------------------------------------------------------------
+                                         WESTMINSTER SHOPPING MANAGER
+                ---------------------------------------------------------------------------------
+                
+                M: SHOW MENU
+                
+                                         
+                
+                
+                """);
+    }
+
 
 
 
