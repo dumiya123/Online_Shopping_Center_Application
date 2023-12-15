@@ -9,10 +9,23 @@ package console_application;
  */
 
 /**
- * This is the main class
+ * This class contains amin method of the program .
+ * This class is responsible for managing all actions within the program.
  */
 public class WestminsterShoppingManager
 {
+    /**
+     * main method of the
+     * @param args
+     */
+
+    public static void main(String[] args)
+    {
+
+
+    }
+
+
 
 
 
