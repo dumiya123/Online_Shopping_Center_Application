@@ -2,6 +2,7 @@ package console_application;
 
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
@@ -17,6 +18,13 @@ import java.util.Scanner;
 public class WestminsterShoppingManager
 {
     private final int maximum_products = 50;
+    private ArrayList<String> products = new ArrayList<>();
+
+
+
+
+
+
 
 
 
