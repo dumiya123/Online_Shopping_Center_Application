@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class WestminsterShoppingManager
 {
     private final int maximum_products = 50;
-    private ArrayList<> products = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
 
 
 
