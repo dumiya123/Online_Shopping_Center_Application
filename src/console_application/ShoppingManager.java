@@ -8,10 +8,12 @@ package console_application;
  */
 
 /**
- *
+ *Interface ShoppingManager.This interface will hold all important method signatures we should
+ * Implement in the WestminsterShopping Manager Class.
  */
 public interface ShoppingManager
 {
+
 
 
 }
