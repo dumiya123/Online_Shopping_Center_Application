@@ -22,27 +22,13 @@ import java.util.Scanner;
  * This class contains main method of the program .
  * This class is responsible for managing all actions within the program.
  */
-public class WestminsterShoppingManager
+public class WestminsterShoppingManager implements ShoppingManager
 {
     private final int maximum_products = 50;
 
     private ArrayList<Product> products = new ArrayList<Product>();
     private static ArrayList<Electronics> electronics_products=new ArrayList<Electronics>();
     private static ArrayList<Clothing>   clothing_products=new ArrayList<Clothing>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
