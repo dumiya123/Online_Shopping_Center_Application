@@ -85,7 +85,7 @@ public class WestminsterShoppingManager implements ShoppingManager
      * add_Product() method will add a product to the system.
      */
 
-    private void add_Product()
+    public void add_Product()
     {
         if (products.size() >= maximum_products)
         {
