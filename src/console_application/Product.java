@@ -67,7 +67,7 @@ public class Product
     }
 
     /**
-     * getter for productID
+     * getter for the productID
      * @return identification code of the product.
      */
 
@@ -127,4 +127,5 @@ public class Product
     {
         this.price = price;
     }
+
 }
