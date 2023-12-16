@@ -8,7 +8,7 @@ package console_application;
  */
 
 /**
- * Product class will be  the
+ * Product class will be  the parent class for the both
  */
 public class Product
 {
