@@ -25,7 +25,15 @@ import java.util.Scanner;
 public class WestminsterShoppingManager
 {
     private final int maximum_products = 50;
-    private ArrayList<Electronics> products = new ArrayList<Electronics>();
+
+    private ArrayList<Product> products = new ArrayList<Product>();
+    private static ArrayList<Electronics> electronics_products=new ArrayList<Electronics>();
+    private static ArrayList<Clothing>   clothing_products=new ArrayList<Clothing>();
+
+
+
+
+
 
 
 
@@ -116,6 +124,13 @@ public class WestminsterShoppingManager
 
 
         }
+
+    }
+
+    private void add_clothing_product()
+    {
+        Scanner input_one=new Scanner(System.in);
+
 
     }
 
