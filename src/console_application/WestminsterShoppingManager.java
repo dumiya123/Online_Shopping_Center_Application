@@ -35,6 +35,8 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
 
+
+
     /**
      * main method of the
      * @param args any arguments pass to the main method.
@@ -49,6 +51,7 @@ public class WestminsterShoppingManager implements ShoppingManager
 
             System.out.println("\nEnter Your Option: ");
             String usrInput= sc.next().toUpperCase();
+
 
         }
 
@@ -87,39 +90,46 @@ public class WestminsterShoppingManager implements ShoppingManager
 
     public void add_Product()
     {
-        if (products.size() >= maximum_products)
+        try
         {
-            System.out.println("Product Limit Reached.Cannot add more products.");
-            return;
+            if (products.size()>=maximum_products)
+            {
+                System.out.println("Maximum limit of products reached");
+                return;
+            }
+
+            Scanner scanner=new Scanner(System.in);
+
+            System.out.println("Enter product type(electronics/clothing):  ");
+            String productType = scanner.nextLine().toLowerCase();
+
+            System.out.print("Enter product ID: ");
+            String productID = scanner.nextLine();
+
+            System.out.println("Enter the product name: ");
+            String name= scanner.nextLine();
+
+            System.out.println("Enter the price of the product: ");
+            int price=0;
+
+
+
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error: "+e);
+
+
         }
 
-        Scanner input=new Scanner(System.in);
-        String productType;
-
-        System.out.println("Enter product type (Electronics/Clothing):  ");
-        productType= input.next();
-
-        switch (productType)
-        {
-            case "electronics":
-
-            case "clothing":
 
 
 
-
-
-        }
 
     }
 
-    private void add_clothing_product()
-    {
-        Scanner input_one=new Scanner(System.in);
 
-
-
-    }
 
 
 
