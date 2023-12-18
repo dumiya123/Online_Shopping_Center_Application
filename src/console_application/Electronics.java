@@ -15,5 +15,6 @@ public class Electronics extends Product
 
         super(productID, name, price);
         this.brand = brand;
+
     }
 }
