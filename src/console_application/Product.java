@@ -28,7 +28,8 @@ public abstract class Product
      * Constructor for the Product class which accepts one parameter productID.
      * @param productID Specific code for identifying the product.
      */
-    public Product(String productID) {
+    public Product(String productID)
+    {
         this.productID = productID;
     }
 
@@ -37,7 +38,8 @@ public abstract class Product
      * @param productID Specific code for identifying the product.
      * @param name name of the product.
      */
-    public Product(String productID, String name) {
+    public Product(String productID, String name)
+    {
         this.productID = productID;
         this.name = name;
     }
@@ -48,7 +50,8 @@ public abstract class Product
      * @param name name of the product.
      * @param price Price of the product.
      */
-    public Product(String productID, String name, double price) {
+    public Product(String productID, String name, double price)
+    {
         this.productID = productID;
         this.name = name;
         this.price = price;
@@ -58,7 +61,8 @@ public abstract class Product
      * Getter for the productID.
      * @return identification code of the product.
      */
-    public String getProductID() {
+    public String getProductID()
+    {
         return productID;
     }
 
@@ -66,7 +70,8 @@ public abstract class Product
      * Setter for the productID.
      * @param productID identification code of the product.
      */
-    public void setProductID(String productID) {
+    public void setProductID(String productID)
+    {
         this.productID = productID;
     }
 
@@ -74,7 +79,8 @@ public abstract class Product
      * Getter for the name.
      * @return name of the product.
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
