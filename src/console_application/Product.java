@@ -88,7 +88,8 @@ public abstract class Product
      * Setter for the name.
      * @param name name of the product.
      */
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
@@ -96,7 +97,8 @@ public abstract class Product
      * Getter for the price.
      * @return price of the product.
      */
-    public double getPrice() {
+    public double getPrice()
+    {
         return price;
     }
 
@@ -104,7 +106,8 @@ public abstract class Product
      * Setter for the price.
      * @param price price of the product.
      */
-    public void setPrice(double price) {
+    public void setPrice(double price)
+    {
         this.price = price;
     }
 }
