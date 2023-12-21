@@ -93,6 +93,7 @@ public abstract class Product
         this.name = name;
     }
 
+
     /**
      * Getter for the price.
      * @return price of the product.
