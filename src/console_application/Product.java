@@ -1,5 +1,6 @@
 package console_application;
 
+
 /**
  * COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
  * Object-Oriented Programming Coursework L5 sem 1
@@ -12,8 +13,30 @@ package console_application;
  */
 public abstract class Product
 {
+    public Product(String productID)
+    {
+        this.productID = productID;
+    }
+
+    public Product(String productID, String name_of_product)
+    {
+
+        this.productID = productID;
+        this.name_of_product = name_of_product;
+
+    }
+
+
+    public Product(String productID, String name_of_product, String available_items)
+    {
+        this.productID = productID;
+        this.name_of_product = name_of_product;
+        this.available_items = available_items;
+    }
+
     private String productID;
-    private String name;
+    private String name_of_product;
+    private String available_items;
     private double price;
 
     /**
@@ -24,91 +47,62 @@ public abstract class Product
 
     }
 
-    /**
-     * Constructor for the Product class which accepts one parameter productID.
-     * @param productID Specific code for identifying the product.
-     */
-    public Product(String productID)
+    public Product(String productID, String name_of_product, String available_items, double price)
     {
-        this.productID = productID;
-    }
 
-    /**
-     * Constructor for the Product class which accepts two parameters productID, name.
-     * @param productID Specific code for identifying the product.
-     * @param name name of the product.
-     */
-    public Product(String productID, String name)
-    {
         this.productID = productID;
-        this.name = name;
-    }
-
-    /**
-     * Constructor for the Product class which accepts three parameters productID, name, price.
-     * @param productID Specific code for identifying the product.
-     * @param name name of the product.
-     * @param price Price of the product.
-     */
-    public Product(String productID, String name, double price)
-    {
-        this.productID = productID;
-        this.name = name;
+        this.name_of_product = name_of_product;
+        this.available_items = available_items;
         this.price = price;
+
     }
 
-    /**
-     * Getter for the productID.
-     * @return identification code of the product.
-     */
-    public String getProductID()
-    {
-        return productID;
-    }
-
-    /**
-     * Setter for the productID.
-     * @param productID identification code of the product.
-     */
     public void setProductID(String productID)
     {
         this.productID = productID;
     }
 
-    /**
-     * Getter for the name.
-     * @return name of the product.
-     */
-    public String getName()
+    public void setName_of_product(String name_of_product)
     {
-        return name;
+        this.name_of_product = name_of_product;
     }
 
-    /**
-     * Setter for the name.
-     * @param name name of the product.
-     */
-    public void setName(String name)
+    public void setAvailable_items(String available_items)
     {
-        this.name = name;
+        this.available_items = available_items;
+    }
+
+    public void setPrice(double price)
+    {
+        this.price = price;
     }
 
 
-    /**
-     * Getter for the price.
-     * @return price of the product.
-     */
+
+    public String getProductID()
+    {
+        return productID;
+    }
+
+    public String getName_of_product()
+    {
+        return name_of_product;
+    }
+
+    public String getAvailable_items()
+    {
+        return available_items;
+    }
+
     public double getPrice()
     {
         return price;
     }
 
-    /**
-     * Setter for the price.
-     * @param price price of the product.
-     */
-    public void setPrice(double price)
-    {
-        this.price = price;
-    }
+
+
+
+
+
+
 }
