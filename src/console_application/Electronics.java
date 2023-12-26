@@ -8,7 +8,7 @@ package console_application;
  */
 public class Electronics extends Product
 {
-    String brand;
+
 
 
 }
