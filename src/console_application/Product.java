@@ -16,7 +16,7 @@ public abstract class Product
     private String productID;   //declare a private String variable to store the productID.
     private String name_of_product; //declare a private String variable to store the name_of_product
     private String available_items; //declare a private String variable to store information of the available items.
-    private double price;
+    private double price; //declare a private String variable to store product price.
 
     /**
      *
