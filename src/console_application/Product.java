@@ -145,8 +145,8 @@ public abstract class Product
     }
 
     /**
-     *
-     * @return
+     * Getter for the available items
+     * @return number of available items
      */
 
     public String getAvailable_items()
@@ -155,8 +155,8 @@ public abstract class Product
     }
 
     /**
-     *
-     * @return
+     * Getter for the price.
+     * @return price of the product.
      */
 
     public double getPrice()
