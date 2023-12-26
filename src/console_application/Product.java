@@ -13,9 +13,9 @@ package console_application;
  */
 public abstract class Product
 {
-    private String productID;
-    private String name_of_product;
-    private String available_items;
+    private String productID;   //declare a private String variable to store the productID.
+    private String name_of_product; //declare a private String variable to store the name_of_product
+    private String available_items; //declare a private String variable to store information of the available items.
     private double price;
 
     /**
@@ -55,7 +55,7 @@ public abstract class Product
      * Constructor for the Product class which accepts two  parameters productID , name_of_product and available_items.
      * @param productID Specific code for identifying the product.
      * @param name_of_product name of the product.
-     * @param available_items number of items available.
+     * @param available_items information about items available.
      */
 
 
@@ -70,7 +70,7 @@ public abstract class Product
      * Constructor for the Product class which accepts two  parameters productID , name_of_product ,available_items .
      * @param productID Specific code for identifying the product.
      * @param name_of_product name of the product.
-     * @param available_items number of items available.
+     * @param available_items information about items available.
      * @param price price of the product.
      */
 
@@ -106,7 +106,7 @@ public abstract class Product
 
     /**
      * Setter for the Available_items
-     * @param available_items number of available items.
+     * @param available_items information about items available.
      */
 
     public void setAvailable_items(String available_items)
@@ -146,7 +146,7 @@ public abstract class Product
 
     /**
      * Getter for the available items
-     * @return number of available items
+     * @return information about items available.
      */
 
     public String getAvailable_items()
