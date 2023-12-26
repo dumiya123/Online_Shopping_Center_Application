@@ -12,9 +12,9 @@ package console_application;
  */
 public abstract class Product
 {
-    String productID;
-    String name;
-    double price;
+    private String productID;
+    private String name;
+    private double price;
 
     /**
      * Default constructor for the Product class.
