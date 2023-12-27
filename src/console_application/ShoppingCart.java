@@ -20,6 +20,15 @@ public class ShoppingCart
      *
      */
 
+    public void add_Product(Product product)
+    {
+
+        products.add(product);
+
+    }
+
+
+
 
 
 
