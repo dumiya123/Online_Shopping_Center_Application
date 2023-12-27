@@ -45,10 +45,11 @@ public class WestminsterShoppingManager implements ShoppingManager
     public static void main(String[] args)
     {
 
-        Scanner sc=new Scanner(System.in);
+
 
         while(true)
         {
+            Scanner sc=new Scanner(System.in);
 
             System.out.println("\nEnter Your Option: ");
             String usrInput= sc.next().toUpperCase();
@@ -60,13 +61,15 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
 
+
+
     }
 
     /**
      * showMenu() method will display the menu to the user.
      */
 
-    public void showMenu()
+    public  void showMenu()
     {
         System.out.println("""
                 

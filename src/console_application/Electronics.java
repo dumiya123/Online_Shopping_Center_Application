@@ -14,46 +14,29 @@ package console_application;
  */
 public class Electronics extends Product
 {
+
     private String brand;
     private int warranty_duration;
 
     /**
      * Default constructor for the Electronics class.
+     *
      */
+
     public Electronics()
     {
 
     }
 
-    public Electronics(String brand, int warranty_duration)
-    {
-        this.brand = brand;
-        this.warranty_duration = warranty_duration;
-    }
-
-    public Electronics(String productID, String brand, int warranty_duration)
-    {
-
-        super(productID);
-        this.brand = brand;
-        this.warranty_duration = warranty_duration;
-    }
-
-    public Electronics(String productID, String name_of_product, String brand, int warranty_duration)
-    {
-
-        super(productID, name_of_product);
-        this.brand = brand;
-        this.warranty_duration = warranty_duration;
-    }
-
-    public Electronics(String productID, String name_of_product, String available_items, String brand, int warranty_duration)
-    {
-
-        super(productID, name_of_product, available_items);
-        this.brand = brand;
-        this.warranty_duration = warranty_duration;
-    }
+    /**
+     *
+     * @param productID The specific id of the electronic product.
+     * @param name_of_product name of the electronic product.
+     * @param available_items The availability status of the electronic product.
+     * @param price price of the electronic product.
+     * @param brand The brand of the electronic product.
+     * @param warranty_duration   warranty period of the specific electronic product.
+     */
 
     public Electronics(String productID, String name_of_product, String available_items, double price, String brand, int warranty_duration)
     {
@@ -61,19 +44,46 @@ public class Electronics extends Product
         super(productID, name_of_product, available_items, price);
         this.brand = brand;
         this.warranty_duration = warranty_duration;
-
     }
 
+    /**
+     * getter for the brand.
+     * @return The brand of the electronic product.
+     */
 
+    public String getBrand()
+    {
+        return brand;
+    }
 
+    /**
+     * setter for the brand.
+     * @param brand The brand of the electronic product.
+     */
 
+    public void setBrand(String brand)
+    {
+        this.brand = brand;
+    }
 
+    /**
+     * getter for the warranty_duration.
+     * @return warranty period of the specific electronic product.
+     */
 
+    public int getWarranty_duration()
+    {
+        return warranty_duration;
+    }
 
+    /**
+     *setter for the warranty_duration
+     * @param warranty_duration warranty period of the specific electronic product.
+     */
 
-
-
-
-
+    public void setWarranty_duration(int warranty_duration)
+    {
+        this.warranty_duration = warranty_duration;
+    }
 
 }
