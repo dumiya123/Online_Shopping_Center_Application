@@ -27,17 +27,35 @@ public class ShoppingCart
 
     }
 
+    /**
+     * Declare a method to remove a product from cart.
+     * @param product
+     */
+
+    public void remove_product(Product product)
+    {
+
+        products.remove(product);
+
+    }
+
+    /**
+     * Declare a method to calculate the total cost
+     */
+
+    public double calculate_total_cost()
+    {
+        double total_cost=0.0;
+        for (Product product:products)
+        {
+
+            total_cost += product.getPrice();
+
+        }
+        return total_cost;
 
 
-
-
-
-
-
-
-
-
-
+    }
 
 
 }

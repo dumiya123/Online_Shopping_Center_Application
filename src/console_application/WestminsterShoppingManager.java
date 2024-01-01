@@ -27,8 +27,9 @@ public class WestminsterShoppingManager implements ShoppingManager
     private final int maximum_products = 50;
 
     private ArrayList<Product> products = new ArrayList<Product>();
-    private static ArrayList<Electronics> electronics_products=new ArrayList<Electronics>();
-    private static ArrayList<Clothing>   clothing_products=new ArrayList<Clothing>();
+
+    private static  final WestminsterShoppingManager shoppingManager=new WestminsterShoppingManager();
+
 
 
 
@@ -38,7 +39,7 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
     /**
-     * main method of the
+     * main method of the program.
      * @param args any arguments pass to the main method.
      */
 
@@ -49,10 +50,10 @@ public class WestminsterShoppingManager implements ShoppingManager
 
         while(true)
         {
+            shoppingManager.showMenu();
             Scanner sc=new Scanner(System.in);
 
-            System.out.println("\nEnter Your Option: ");
-            String usrInput= sc.next().toUpperCase();
+
 
 
         }
@@ -98,25 +99,11 @@ public class WestminsterShoppingManager implements ShoppingManager
         {
             if (products.size()>=maximum_products)
             {
-                System.out.println("Maximum limit of products reached");
+
+                System.out.println("Cannot Add more products.Maximum products limit reached.");
                 return;
+
             }
-
-            Scanner scanner=new Scanner(System.in);
-
-            System.out.println("Enter product type(electronics/clothing):  ");
-            String productType = scanner.nextLine().toLowerCase();
-
-            System.out.print("Enter product ID: ");
-            String productID = scanner.nextLine();
-
-            System.out.println("Enter the product name: ");
-            String name= scanner.nextLine();
-
-            System.out.println("Enter the price of the product: ");
-            int price=0;
-
-
 
 
         }
@@ -127,22 +114,7 @@ public class WestminsterShoppingManager implements ShoppingManager
 
         }
 
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
