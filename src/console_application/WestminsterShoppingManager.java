@@ -44,39 +44,41 @@ public class WestminsterShoppingManager implements ShoppingManager
 
         while(true)
         {
-
-            shoppingManager.showMenu();
-            Scanner sc=new Scanner(System.in);
-            String usrInput=getUSerInput("Enter your Option:  ").toUpperCase();
-
-            switch (usrInput)
+            try
             {
-                case "A":
-                    shoppingManager.add_Product();
-                    break;
-                case "B":
-                    //Have to implement delete method
-                    break;
-                case "C":
-                    //have to implement a method to view product details.
-                    break;
-                case "O":
-                    System.out.println("Exiting the program.");
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
+                shoppingManager.showMenu();
+                Scanner sc=new Scanner(System.in);
+                String usrInput=getUSerInput("Enter your Option:  ").toUpperCase();
 
+                switch (usrInput)
+                {
+                    case "A":
+                        shoppingManager.add_Product();
+                        break;
+                    case "B":
+                        //Have to implement delete method
+                        break;
+                    case "C":
+                        //have to implement a method to view product details.
+                        break;
+                    case "O":
+                        System.out.println("Exiting the program.");
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Invalid choice.");
+
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                System.out.println("You cannot enter a numeric values.Please enter a Upper case Alphabetic character.(Hint:enter a character like A,B,C,D.)");
             }
 
 
-
-
         }
-
-
-
-
 
 
 
@@ -127,13 +129,14 @@ public class WestminsterShoppingManager implements ShoppingManager
             String productType=getUSerInput("Enter product type (electronics/clothing): ").toLowerCase();
             int productID=Integer.parseInt(getUSerInput("Enter the product ID:"));
             String name=getUSerInput("Enter the product name: ");
-            double price=Double.parseDouble(getUSerInput("Enter the price ofm the product: "));
+            double price=Double.parseDouble(getUSerInput("Enter the price of the product: "));
 
             //creating a product based on the user input.
             Product product=createProduct(productType,productID,name,price);
             if(product!=null)
             {
                 products.add(product);
+                System.out.println();
                 System.out.println(productType.substring(0,1).toUpperCase()+productType.substring(1)+" product added successfully.");
             }
 
