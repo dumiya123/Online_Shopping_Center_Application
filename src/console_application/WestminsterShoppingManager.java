@@ -14,8 +14,8 @@ import java.util.Scanner;
 /**
  COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
  Object-Oriented Programming Coursework L5 sem 1
- @author Dumindu Induwara Gamage
- @version 1 Console application
+ @author Dumindu Induwara Gamage.
+ @version 1 Console application.
  */
 
 /**
@@ -29,11 +29,6 @@ public class WestminsterShoppingManager implements ShoppingManager
     private ArrayList<Product> products = new ArrayList<Product>();
 
     private static  final WestminsterShoppingManager shoppingManager=new WestminsterShoppingManager();
-
-
-
-
-
 
 
 
@@ -108,6 +103,12 @@ public class WestminsterShoppingManager implements ShoppingManager
             //Getting user input for product details
             String productType=getUSerInput("Enter product type (electronics/clothing): ").toLowerCase();
             int productID=Integer.parseInt(getUSerInput("Enter the product ID:"));
+            String name=getUSerInput("Enter the product name: ");
+            double price=Double.parseDouble(getUSerInput("Enter the price ofm the product: "));
+
+
+
+
 
 
 
@@ -116,17 +117,17 @@ public class WestminsterShoppingManager implements ShoppingManager
         {
             System.out.println("Error: "+e);
 
-
         }
 
     }
 
     /**
-     *
-     * Create a method to get input with a provided prompt.
-     *
-     *
+     * Create a separate method to get user input with provided
+     * @param prompt USer input as a String.
+     * @return  retrieve user Input as a String
      */
+
+
 
     public static String getUSerInput(String prompt)
     {
