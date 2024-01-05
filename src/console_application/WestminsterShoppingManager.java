@@ -105,6 +105,11 @@ public class WestminsterShoppingManager implements ShoppingManager
 
             }
 
+            //Getting user input for product details
+            String productType=getUSerInput("Enter product type (electronics/clothing): ").toLowerCase();
+            int productID=Integer.parseInt(getUSerInput("Enter the product ID:"));
+
+
 
         }
         catch(Exception e)
@@ -113,6 +118,22 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
         }
+
+    }
+
+    /**
+     *
+     * Create a method to get input with a provided prompt.
+     *
+     *
+     */
+
+    public static String getUSerInput(String prompt)
+    {
+
+        System.out.println(prompt);
+        Scanner scanner=new Scanner(System.in);
+        return scanner.nextLine();
 
     }
 
