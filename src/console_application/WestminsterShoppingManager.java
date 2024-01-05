@@ -31,6 +31,9 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
 
+
+
+
     /**
      * main method of the program.
      * @param args any arguments pass to the main method.
@@ -39,10 +42,9 @@ public class WestminsterShoppingManager implements ShoppingManager
     public static void main(String[] args)
     {
 
-
-
         while(true)
         {
+
             shoppingManager.showMenu();
             Scanner sc=new Scanner(System.in);
             String usrInput=getUSerInput("Enter your Option:  ").toUpperCase();
@@ -144,6 +146,15 @@ public class WestminsterShoppingManager implements ShoppingManager
 
     }
 
+    /**
+     * Create a separate to create a Product
+     * @param productType  type of the product.
+     * @param productID
+     * @param name
+     * @param price
+     * @return
+     */
+
     private Product createProduct(String productType,int productID,String name,double price)
     {
         switch (productType)
@@ -161,9 +172,6 @@ public class WestminsterShoppingManager implements ShoppingManager
     }
 
 
-
-
-
     /**
      * Create a separate method to get user input with provided
      * @param prompt USer input as a String.
@@ -179,8 +187,5 @@ public class WestminsterShoppingManager implements ShoppingManager
         return scanner.nextLine();
 
     }
-
-
-
 
 }
