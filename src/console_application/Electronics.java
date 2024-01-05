@@ -24,7 +24,7 @@ public class Electronics extends Product
      *
      */
 
-    public Electronics()
+    public Electronics(int productID, String name, double price, String brand)
     {
 
     }

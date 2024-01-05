@@ -15,7 +15,7 @@ public class Clothing extends Product
      * Default constructor for the Clothing class.
      */
 
-    public Clothing()
+    public Clothing(int productID, String name, double price, String size)
     {
 
     }

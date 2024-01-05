@@ -1,6 +1,5 @@
 package console_application;
 
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,7 +31,6 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
 
-
     /**
      * main method of the program.
      * @param args any arguments pass to the main method.
@@ -47,6 +45,27 @@ public class WestminsterShoppingManager implements ShoppingManager
         {
             shoppingManager.showMenu();
             Scanner sc=new Scanner(System.in);
+            String usrInput=getUSerInput("Enter your Option:  ").toUpperCase();
+
+            switch (usrInput)
+            {
+                case "A":
+                    shoppingManager.add_Product();
+                    break;
+                case "B":
+                    //Have to implement delete method
+                    break;
+                case "C":
+                    //have to implement a method to view product details.
+                    break;
+                case "O":
+                    System.out.println("Exiting the program.");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+
+            }
 
 
 
@@ -73,11 +92,13 @@ public class WestminsterShoppingManager implements ShoppingManager
                                          WESTMINSTER SHOPPING MANAGER
                 ---------------------------------------------------------------------------------
                 
-                M: SHOW MENU
-                A: ADD NEW PRODUCT
-                B: DELETE PRODUCT
-                C: VIEW PRODUCT LIST
-                D: SAVE DETAILS IN TO A FILE
+                M:SHOW MENU
+                A:ADD NEW PRODUCT
+                B:DELETE PRODUCT
+                C:VIEW PRODUCT LIST
+                D:SAVE DETAILS IN TO A FILE
+                E:LOAD DETAILS FROM THE FILE
+                O:EXIT FROM THE SYSTEM.
                                          
                 ---------------------------------------------------------------------------------
                 
@@ -106,11 +127,13 @@ public class WestminsterShoppingManager implements ShoppingManager
             String name=getUSerInput("Enter the product name: ");
             double price=Double.parseDouble(getUSerInput("Enter the price ofm the product: "));
 
-
-
-
-
-
+            //creating a product based on the user input.
+            Product product=createProduct(productType,productID,name,price);
+            if(product!=null)
+            {
+                products.add(product);
+                System.out.println(productType.substring(0,1).toUpperCase()+productType.substring(1)+" product added successfully.");
+            }
 
         }
         catch(Exception e)
@@ -121,12 +144,31 @@ public class WestminsterShoppingManager implements ShoppingManager
 
     }
 
+    private Product createProduct(String productType,int productID,String name,double price)
+    {
+        switch (productType)
+        {
+            case "electronics":
+                String brand=getUSerInput("Enter the brand of the electronic product: ");
+                return new Electronics(productID,name,price,brand);
+            case "clothing":
+                String size=getUSerInput("Enter the size of the clothing: ");
+                return new Clothing(productID,name,price,size);
+            default:
+                return null;
+
+        }
+    }
+
+
+
+
+
     /**
      * Create a separate method to get user input with provided
      * @param prompt USer input as a String.
      * @return  retrieve user Input as a String
      */
-
 
 
     public static String getUSerInput(String prompt)
