@@ -32,8 +32,6 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
 
-
-
     /**
      * main method of the program.
      * @param args any arguments pass to the main method.
