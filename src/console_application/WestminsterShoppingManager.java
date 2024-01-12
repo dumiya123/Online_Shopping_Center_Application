@@ -227,8 +227,6 @@ public class WestminsterShoppingManager implements ShoppingManager
                 while(scanner)
                 {
 
-
-
                 }
 
 
