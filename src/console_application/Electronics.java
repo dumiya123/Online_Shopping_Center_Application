@@ -17,6 +17,15 @@ public class Electronics extends Product
     private String brand;
     private int warranty_duration;
 
+    @Override
+    public String toString()
+    {
+        return "Electronics{" +
+                "brand='" + brand + '\'' +
+                ", warranty_duration=" + warranty_duration +
+                '}';
+    }
+
     /**
      * Default constructor for the Electronics class.
      *
@@ -84,5 +93,7 @@ public class Electronics extends Product
     {
         this.warranty_duration = warranty_duration;
     }
+
+
 
 }

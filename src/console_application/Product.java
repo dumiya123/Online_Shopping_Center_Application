@@ -114,6 +114,18 @@ public abstract class Product
         this.available_items = available_items;
     }
 
+    @Override
+    public String toString()
+    {
+
+        return "Product{" +
+                "productID='" + productID + '\'' +
+                ", name_of_product='" + name_of_product + '\'' +
+                ", available_items='" + available_items + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
     /**
      * Setter for the Price
      * @param price price of the product.
@@ -162,6 +174,11 @@ public abstract class Product
     public double getPrice()
     {
         return price;
+    }
+
+    public String toCSV()
+    {
+        return productID + "," + name_of_product + "," + price;
     }
 
 }

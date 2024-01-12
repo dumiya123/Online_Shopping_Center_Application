@@ -1,14 +1,13 @@
-package GUI_application;
-
-// import statements
-//import javafx.scene.layout.Border;
+package console_application;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 
-public class Main {
+
+public class GUIHome
+{
     public static void main(String[] args) {
         //Red - Top
         JPanel panelRed=new JPanel();
@@ -83,7 +82,8 @@ public class Main {
         panelBlue.add(lbName);
 
 
-        if(true){
+        if(true)
+        {
             panelBlue.add(lbBrand);
             panelBlue.add(lbWarranty);
         }
@@ -147,5 +147,7 @@ public class Main {
 
 
     }
+
+
 
 }

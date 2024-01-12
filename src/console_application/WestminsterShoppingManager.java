@@ -1,12 +1,9 @@
 package console_application;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -25,11 +22,11 @@ public class WestminsterShoppingManager implements ShoppingManager
 {
     private final int maximum_products = 50;
 
+    private static final String product_details_file="product_data.csv";  //create a file to store
+
     private ArrayList<Product> products = new ArrayList<Product>();
 
     private static  final WestminsterShoppingManager shoppingManager=new WestminsterShoppingManager();
-
-
 
 
     /**
@@ -63,6 +60,8 @@ public class WestminsterShoppingManager implements ShoppingManager
                         System.out.println("Exiting the program.");
                         System.exit(0);
                         break;
+                    case "G":
+                        shoppingManager.Show_GUI();
                     default:
                         System.out.println("Invalid choice.");
 
@@ -99,6 +98,7 @@ public class WestminsterShoppingManager implements ShoppingManager
                 D:SAVE DETAILS IN TO A FILE
                 E:LOAD DETAILS FROM THE FILE
                 O:EXIT FROM THE SYSTEM.
+                G:SHOW GRAPHICAL USER INTERFACE.
                                          
                 ---------------------------------------------------------------------------------
                 
@@ -146,7 +146,7 @@ public class WestminsterShoppingManager implements ShoppingManager
     }
 
     /**
-     * Create a separate to create a Product
+     * Create a separate method to create a Product
      * @param productType  type of the product.
      * @param productID
      * @param name
@@ -177,7 +177,6 @@ public class WestminsterShoppingManager implements ShoppingManager
      * @return  retrieve user Input as a String
      */
 
-
     public static String getUSerInput(String prompt)
     {
 
@@ -186,5 +185,58 @@ public class WestminsterShoppingManager implements ShoppingManager
         return scanner.nextLine();
 
     }
+
+    public void Show_GUI()
+    {
+
+
+    }
+
+    /**
+     *
+     */
+
+
+
+
+    public void save_to_file() throws FileNotFoundException
+    {
+        try
+                (PrintWriter writer=new PrintWriter(product_details_file))
+        {
+            for (Product product:products)
+            {
+                writer.println(product.toCSV());
+            }
+
+        }catch (Exception e)
+        {
+            System.out.println();
+        }
+
+
+    }
+
+    // Method to load products from a CSV file
+    public void loadFromFile()
+    {
+        try
+        {
+            (Scanner scanner=new Scanner(product_details_file))
+            {
+
+
+            }
+
+        }
+    }
+
+
+    private Product createProductFromCSV(String[] parts)
+    {
+
+
+    }
+
 
 }
