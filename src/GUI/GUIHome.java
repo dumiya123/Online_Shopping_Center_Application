@@ -6,7 +6,9 @@ import java.awt.*;
 
 public class GUIHome
 {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+
         //Red - Top
         JPanel panelRed=new JPanel();
         panelRed.setPreferredSize(new Dimension(0,100));
@@ -85,9 +87,12 @@ public class GUIHome
             panelBlue.add(lbBrand);
             panelBlue.add(lbWarranty);
         }
-        else {
+        else
+        {
+
             panelBlue.add(lbSize);
             panelBlue.add(lbColour);
+
         }
         panelBlue.add(lbAvailable);
 

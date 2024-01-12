@@ -196,8 +196,6 @@ public class WestminsterShoppingManager implements ShoppingManager
      */
 
 
-
-
     public void save_to_file() throws FileNotFoundException
     {
         try
@@ -219,29 +217,61 @@ public class WestminsterShoppingManager implements ShoppingManager
     // Method to load products from a CSV file
     public void loadFromFile()
     {
-        try
+
+        try (Scanner scanner = new Scanner(new File(product_details_file)))
         {
-            (Scanner scanner=new Scanner(new File(product_details_file)))
+
+            products.clear();
+            while (scanner.hasNextLine())
             {
-                products.clear();
-                while(scanner)
+
+                String[] parts = scanner.nextLine().split(",");
+                Product product = createProductFromCSV(parts);
+                if (product != null)
                 {
-
+                    products.add(product);
                 }
-
-
-
-
             }
-
+            System.out.println("Data loaded from file successfully.");
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("File not found: " + e.getMessage());
         }
     }
-
-
     private Product createProductFromCSV(String[] parts)
     {
+        // Check if there are enough parts to create a product
+        if (parts.length < 4)
+        {
+            System.out.println("Invalid data format in CSV.");
+            return null;
+        }
 
+        // Extracting data from CSV
+        int productId = Integer.parseInt(parts[0]);
+        String name = parts[1];
+        double price = Double.parseDouble(parts[2]);
 
+        // Assuming the last part is a common field for all products (e.g., product type)
+        String productType = parts[3];
+
+        // Creating a product based on product type
+        if ("ELECTRONICS".equalsIgnoreCase(productType))
+        {
+            // Assuming Electronics class has a constructor that takes productId, name, price, and additional fields
+            return new Electronics(productId, name, price, "Electronics Brand");
+        }
+        else if ("CLOTHING".equalsIgnoreCase(productType))
+        {
+            // Assuming Clothing class has a constructor that takes productId, name, price, and additional fields
+            return new Clothing(productId, name, price, "Clothing Size");
+        } else
+        {
+            System.out.println("Unknown product type: " + productType);
+            return null;
+
+        }
     }
 
 

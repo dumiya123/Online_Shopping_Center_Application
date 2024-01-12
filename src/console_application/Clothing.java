@@ -79,4 +79,11 @@ public class Clothing extends Product
     }
 
 
+    public String toCsv()
+    {
+
+        return super.toCSV() + " , " + size + "CLOTHING";
+
+    }
+
 }
