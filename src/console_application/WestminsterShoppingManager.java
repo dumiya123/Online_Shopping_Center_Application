@@ -68,7 +68,6 @@ public class WestminsterShoppingManager implements ShoppingManager
 
                 }
 
-
             }
             catch (Exception e)
             {
@@ -77,7 +76,6 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
         }
-
 
 
     }
@@ -174,7 +172,7 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
     /**
-     * Create a separate method to get user input with provided
+     * Create a separate method to get user input with provided prompt
      * @param prompt USer input as a String.
      * @return  retrieve user Input as a String
      */
