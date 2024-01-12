@@ -222,8 +222,14 @@ public class WestminsterShoppingManager implements ShoppingManager
     {
         try
         {
-            (Scanner scanner=new Scanner(product_details_file))
+            (Scanner scanner=new Scanner(new File(product_details_file)))
             {
+                products.clear();
+                while(scanner)
+                {
+
+
+                }
 
 
 
