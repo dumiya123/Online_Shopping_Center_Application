@@ -189,7 +189,6 @@ public class WestminsterShoppingManager implements ShoppingManager
     public void Show_GUI()
     {
 
-
     }
 
     /**
@@ -227,6 +226,7 @@ public class WestminsterShoppingManager implements ShoppingManager
                 products.clear();
                 while(scanner)
                 {
+
 
 
                 }
