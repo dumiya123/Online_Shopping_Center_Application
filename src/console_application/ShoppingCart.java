@@ -58,4 +58,6 @@ public class ShoppingCart
     }
 
 
+    public void setVisible(boolean b) {
+    }
 }

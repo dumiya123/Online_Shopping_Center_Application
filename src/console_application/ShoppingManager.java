@@ -15,4 +15,8 @@ public interface ShoppingManager
 {
     void showMenu();
     void add_Product();
+    void  Show_details_of_product();
+    void deleteProduct();
+    void saveToFile();
+    void loadFromFile();
 }

@@ -286,11 +286,14 @@ public class WestminsterShoppingManager implements ShoppingManager
     public void loadFromFile()
     {
         products.clear(); // Clear existing data before loading from file
-        try (Scanner scanner = new Scanner(new File(product_details_file))) {
+        try (Scanner scanner = new Scanner(new File(product_details_file)))
+        {
             scanner.nextLine(); // Skip the header line
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNextLine())
+            {
                 String[] data = scanner.nextLine().split(",");
-                if (data.length >= 7) {
+                if (data.length >= 7)
+                {
                     int productType = -1;
                     if(data[0].equals("Electronics"))
                     {
@@ -330,15 +333,18 @@ public class WestminsterShoppingManager implements ShoppingManager
 
 
     // Helper method to create a product from CSV data
-    private Product createProductFromCSV(String[] parts) {
+    private Product createProductFromCSV(String[] parts)
+    {
         // Check if there are enough parts to create a product
         System.out.println(parts.length);
-        if (parts.length < 4) {
+        if (parts.length < 4)
+        {
             System.out.println("Invalid data format in CSV. Skipping line.");
             return null;
         }
 
-        try {
+        try
+        {
             // Extracting data from CSV
             String productId = parts[0];
             String name = parts[1];
@@ -348,16 +354,23 @@ public class WestminsterShoppingManager implements ShoppingManager
             String productType = parts[3];
 
             // Creating a product based on product type
-            if ("ELECTRONICS".equalsIgnoreCase(productType)) {
+            if ("ELECTRONICS".equalsIgnoreCase(productType))
+            {
                 return new Electronics(productId, name, price, "Electronics Brand");
-            } else if ("CLOTHING".equalsIgnoreCase(productType)) {
+            }
+            else if ("CLOTHING".equalsIgnoreCase(productType))
+            {
                 return new Clothing(productId, name, 0, price, "Clothing Size", "Color");
-            } else {
+            }
+            else
+            {
                 System.out.println("Unknown product type: " + productType + ". Skipping line.");
                 return null;
             }
 
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             System.out.println("Error parsing numeric values in CSV. Skipping line.");
             return null;
         }

@@ -3,6 +3,8 @@ package console_application;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class GUIHome extends JFrame
@@ -11,6 +13,7 @@ public class GUIHome extends JFrame
     {
         setTitle("Westminster Shopping Center");
         initializeComponents();
+
     }
 
     private void initializeComponents()
@@ -111,11 +114,26 @@ public class GUIHome extends JFrame
         panelPurple.add(addToCart);
         addToCart.setPreferredSize(new Dimension(200,30));
 
+
+
         //Yellow Button - Shopping Cart
         JButton shoppingCart = new JButton("Shopping Cart");
         panelYellow.setLayout(new FlowLayout(FlowLayout.RIGHT,13,10));
         panelYellow.add(shoppingCart);
         shoppingCart.setPreferredSize(new Dimension(150,30));
+
+        shoppingCart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                Shopping_Cart_GUI shoppingCartGui=new Shopping_Cart_GUI();
+                shoppingCartGui.setVisible(true);
+
+            }
+        });
+
+
+
 
         //Green Table
         String[] column={"Product ID","Name","Category","Price(C)","Info"};
@@ -146,5 +164,8 @@ public class GUIHome extends JFrame
         frame.add(panelRed,BorderLayout.NORTH);
         frame.add(panelGreen,BorderLayout.CENTER);
         frame.add(panelOrange,BorderLayout.SOUTH);
+
+
+
     }
 }
