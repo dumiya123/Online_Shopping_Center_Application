@@ -15,8 +15,9 @@ public abstract class Product
 {
     private String productID;   //declare a private String variable to store the productID.
     private String name_of_product; //declare a private String variable to store the name_of_product
-    private String available_items; //declare a private String variable to store information of the available items.
+    private int no_of_available_items; //declare a private String variable to store information of the available items.
     private double price; //declare a private String variable to store product price.
+    private int productType;
 
     /**
      *
@@ -45,10 +46,8 @@ public abstract class Product
 
     public Product(String productID, String name_of_product)
     {
-
         this.productID = productID;
         this.name_of_product = name_of_product;
-
     }
 
     /**
@@ -58,12 +57,11 @@ public abstract class Product
      * @param available_items information about items available.
      */
 
-
-    public Product(String productID, String name_of_product, String available_items)
+    public Product(String productID, String name_of_product, int available_items)
     {
         this.productID = productID;
         this.name_of_product = name_of_product;
-        this.available_items = available_items;
+        this.no_of_available_items = available_items;
     }
 
     /**
@@ -74,12 +72,11 @@ public abstract class Product
      * @param price price of the product.
      */
 
-    public Product(String productID, String name_of_product, String available_items, double price)
+    public Product(String productID, String name_of_product, int available_items, double price)
     {
-
         this.productID = productID;
         this.name_of_product = name_of_product;
-        this.available_items = available_items;
+        this.no_of_available_items = available_items;
         this.price = price;
 
     }
@@ -109,19 +106,18 @@ public abstract class Product
      * @param available_items information about items available.
      */
 
-    public void setAvailable_items(String available_items)
+    public void setAvailable_items(int available_items)
     {
-        this.available_items = available_items;
+        this.no_of_available_items = available_items;
     }
 
     @Override
     public String toString()
     {
-
         return "Product{" +
                 "productID='" + productID + '\'' +
                 ", name_of_product='" + name_of_product + '\'' +
-                ", available_items='" + available_items + '\'' +
+                ", available_items='" + no_of_available_items + '\'' +
                 ", price=" + price +
                 '}';
     }
@@ -158,12 +154,13 @@ public abstract class Product
 
     /**
      * Getter for the available items
+     *
      * @return information about items available.
      */
 
-    public String getAvailable_items()
+    public int getAvailable_items()
     {
-        return available_items;
+        return no_of_available_items;
     }
 
     /**
@@ -179,6 +176,16 @@ public abstract class Product
     public String toCSV()
     {
         return productID + "," + name_of_product + "," + price;
+    }
+
+    public int getProductType()
+    {
+        return productType;
+    }
+
+    public void setProductType(int productType)
+    {
+        this.productType = productType;
     }
 
 }

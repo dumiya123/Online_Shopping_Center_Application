@@ -89,14 +89,10 @@ public class GUIHome
         }
         else
         {
-
             panelBlue.add(lbSize);
             panelBlue.add(lbColour);
-
         }
         panelBlue.add(lbAvailable);
-
-
 
         //Purple Bottom Lower
         JPanel panelPurple=new JPanel();

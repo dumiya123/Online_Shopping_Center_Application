@@ -15,8 +15,4 @@ public interface ShoppingManager
 {
     void showMenu();
     void add_Product();
-
-
-
-
 }

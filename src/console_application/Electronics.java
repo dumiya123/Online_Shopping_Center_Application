@@ -1,6 +1,6 @@
 package console_application;
 
-/**
+/*
  COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
  Object-Oriented Programming Coursework L5 sem 1
  @author Dumindu Induwara Gamage
@@ -15,7 +15,7 @@ package console_application;
 public class Electronics extends Product
 {
     private String brand;
-    private int warranty_duration;
+    private String warranty_duration;
 
     @Override
     public String toString()
@@ -31,7 +31,8 @@ public class Electronics extends Product
      *
      */
 
-    public Electronics(int productID, String name, double price, String brand)
+
+    public Electronics(String productID, String name, double price, String brand)
     {
 
     }
@@ -40,17 +41,17 @@ public class Electronics extends Product
      *
      * @param productID The specific id of the electronic product.
      * @param name_of_product name of the electronic product.
-     * @param available_items The availability status of the electronic product.
+     * @param no_of_available_items The availability status of the electronic product.
      * @param price price of the electronic product.
      * @param brand The brand of the electronic product.
      * @param warranty_duration   warranty period of the specific electronic product.
      */
 
-    public Electronics(String productID, String name_of_product, String available_items, double price, String brand, int warranty_duration)
+    public Electronics(String productID, String name_of_product, int no_of_available_items, double price, String brand, String warranty_duration)
     {
-
-        super(productID, name_of_product, available_items, price);
+        super(productID, name_of_product, no_of_available_items, price);
         this.brand = brand;
+        this.setProductType(1);
         this.warranty_duration = warranty_duration;
     }
 
@@ -79,7 +80,7 @@ public class Electronics extends Product
      * @return warranty period of the specific electronic product.
      */
 
-    public int getWarranty_duration()
+    public String getWarranty_duration()
     {
         return warranty_duration;
     }
@@ -89,7 +90,7 @@ public class Electronics extends Product
      * @param warranty_duration warranty period of the specific electronic product.
      */
 
-    public void setWarranty_duration(int warranty_duration)
+    public void setWarranty_duration(String warranty_duration)
     {
         this.warranty_duration = warranty_duration;
     }

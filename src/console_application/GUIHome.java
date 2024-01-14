@@ -2,19 +2,24 @@ package console_application;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.awt.*;
 
 
-public class GUIHome
+public class GUIHome extends JFrame
 {
-    public static void main(String[] args) {
+    public GUIHome()
+    {
+        setTitle("Westminster Shopping Center");
+        initializeComponents();
+    }
+
+    private void initializeComponents()
+    {
         //Red - Top
         JPanel panelRed=new JPanel();
         panelRed.setPreferredSize(new Dimension(0,100));
         panelRed.setBackground(Color.RED);
         panelRed.setLayout(new BoxLayout(panelRed,BoxLayout.X_AXIS));
-
 
         //Green - Center
         JPanel panelGreen=new JPanel();
@@ -87,13 +92,12 @@ public class GUIHome
             panelBlue.add(lbBrand);
             panelBlue.add(lbWarranty);
         }
-        else {
+        else
+        {
             panelBlue.add(lbSize);
             panelBlue.add(lbColour);
         }
         panelBlue.add(lbAvailable);
-
-
 
         //Purple Bottom Lower
         JPanel panelPurple=new JPanel();
@@ -131,8 +135,6 @@ public class GUIHome
         panelGreen.add(scrollPane);
 
 
-
-
         JFrame frame=new JFrame("Application");
         frame.setSize(750,750);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -144,10 +146,5 @@ public class GUIHome
         frame.add(panelRed,BorderLayout.NORTH);
         frame.add(panelGreen,BorderLayout.CENTER);
         frame.add(panelOrange,BorderLayout.SOUTH);
-
-
     }
-
-
-
 }
