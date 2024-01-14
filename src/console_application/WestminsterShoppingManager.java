@@ -15,10 +15,12 @@ import java.util.Scanner;
  @version 1 Console application.
  */
 
+
 /**
  * This class contains main method of the program .
  * This class is responsible for managing all actions within the program.
  */
+
 public class WestminsterShoppingManager implements ShoppingManager
 {
     private final int maximum_products = 50;
