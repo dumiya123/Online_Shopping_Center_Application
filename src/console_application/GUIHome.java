@@ -128,7 +128,8 @@ public class GUIHome extends JFrame
         panelYellow.add(shoppingCart);
         shoppingCart.setPreferredSize(new Dimension(150,30));
 
-        shoppingCart.addActionListener(new ActionListener() {
+        shoppingCart.addActionListener(new ActionListener()
+        {
             @Override
             public void actionPerformed(ActionEvent e)
             {
