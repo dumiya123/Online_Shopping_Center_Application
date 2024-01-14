@@ -1,9 +1,15 @@
 package console_application;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+/*
+ COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
+ Object-Oriented Programming Coursework L5 sem 1
+ @author Dumindu Induwara Gamage.
+ @version 2 GUI application.
+ */
 
 public class Shopping_Cart_GUI extends JFrame
 {
@@ -34,38 +40,48 @@ public class Shopping_Cart_GUI extends JFrame
 
         // Create the scroll pane and add the table to it
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
 
-        // Create the frame and add the scroll pane to it
-        JFrame frame = new JFrame();
-        frame.add(scrollPane, BorderLayout.CENTER);
+        // Create the label
+        JLabel label_one = new JLabel("Total");
+
+        // Set the frame's layout manager to GridBagLayout
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // Set constraints for the scroll pane
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(scrollPane, gbc);
+
+        // Set constraints for the label
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        add(label_one, gbc);
 
         // Set the frame's title, size, and default close operation
-        frame.setTitle("Shopping Cart");
-        frame.setSize(500, 300); // Increase size for better visibility
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Shopping Cart");
+        setSize(500, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Set minimum size to enforce responsiveness
-        frame.setMinimumSize(new Dimension(400, 200));
+        setMinimumSize(new Dimension(400, 200));
 
         // Show the frame
-        frame.setVisible(true);
-
-        JLabel lablel_one=new JLabel("Total");
-        lablel_one.setSize(200,200);
-        frame.add(lablel_one);
-
-
-
+        setVisible(true);
 
 
     }
 
     public static void main(String[] args)
     {
-
         SwingUtilities.invokeLater(() -> new Shopping_Cart_GUI());
-
     }
 }
 

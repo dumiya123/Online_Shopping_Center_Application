@@ -3,6 +3,7 @@ package console_application;
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -114,31 +115,33 @@ public class WestminsterShoppingManager implements ShoppingManager
         {
             if (products.size() > maximum_products)
             {
-                System.out.println("Cannot Add more products.Maximum products limit reached.");
+                System.out.println("Cannot add more products. Maximum products limit reached.");
                 return;
             }
 
-            //Getting user input for product details
+            // Getting user input for product details
             int productType = Integer.parseInt(getUSerInput("Enter product type (1 - electronics | 2 - clothing): "));
             String productID = getUSerInput("Enter the product ID:");
-            String name =  getUSerInput("Enter the product name: ");
+            String name = getUSerInput("Enter the product name: ");
             double price = Double.parseDouble(getUSerInput("Enter the price of the product: "));
 
-            //creating a product based on the user input.
-            Product product = createProduct( productType, productID, name, price );
-            if(product != null)
+            // Creating a product based on the user input.
+            Product product = createProduct(productType, productID, name, price);
+            if (product != null)
             {
                 products.add(product);
                 System.out.println();
-                System.out.println(" product added successfully.");
+                System.out.println("Product added successfully.");
             }
         }
-        catch(Exception e)
+        catch (NumberFormatException e)
         {
-            System.out.println("Error: "+e);
-
+            System.out.println("Error: Invalid input format. Please enter a valid number for price or product type.");
         }
-
+        catch (Exception e)
+        {
+            System.out.println("Error: " + e);
+        }
     }
 
     public void Show_details_of_product()
@@ -178,27 +181,36 @@ public class WestminsterShoppingManager implements ShoppingManager
     // Method to delete a product by product ID
     public void deleteProduct()
     {
-        String productId = getUSerInput("Enter the product ID to Delete: ");
-
-        Iterator<Product> iterator = products.iterator();
-        boolean productFound = false;
-
-        while (iterator.hasNext())
+        try
         {
-            Product product = iterator.next();
-            if (productId.equals(product.getProductID()))
+            String productId = getUSerInput("Enter the product ID to Delete: ");
+
+            Iterator<Product> iterator = products.iterator();
+            boolean productFound = false;
+
+            while (iterator.hasNext())
             {
-                iterator.remove();
-                productFound = true;
-                System.out.println("Product deleted successfully.");
-                break;
+                Product product = iterator.next();
+                if (productId.equals(product.getProductID()))
+                {
+                    iterator.remove();
+                    productFound = true;
+                    System.out.println("Product deleted successfully.");
+                    break;
+                }
             }
+
+            if (!productFound)
+            {
+                System.out.println("Product not found with ID: " + productId);
+            }
+
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("Invalid input.Please enter a valid Product ID.");
         }
 
-        if (!productFound)
-        {
-            System.out.println("Product not found with ID: " + productId);
-        }
     }
 
     /**
@@ -214,23 +226,32 @@ public class WestminsterShoppingManager implements ShoppingManager
 
     private Product createProduct(int productType, String productID, String name, double price)
     {
-        return switch (productType) {
-            case 1 -> {
-                String brand = getUSerInput("Enter the brand of the electronic product: ");
-                String warrentyDuration = getUSerInput("Enter the warranty duration of the electronic product: ");
-                int no_of_available_items = Integer.parseInt(getUSerInput("Enter the number of available no of products: "));
-                yield new Electronics(productID, name, no_of_available_items, price, brand, warrentyDuration );
-            }
-            case 2 -> {
-                //String productID, String name_of_product, String available_items, double price, String size, String colour
-
-                String size = getUSerInput("Enter the size of the clothing: ");
-                int no_of_available_items = Integer.parseInt(getUSerInput("Enter the number of available no of products: "));
-                String color = getUSerInput("Enter the color of the product: ");
-                yield new Clothing(productID, name, no_of_available_items, price, size, color);
-            }
-            default -> null;
-        };
+        try
+        {
+            return switch (productType)
+            {
+                case 1 ->
+                {
+                    String brand = getUSerInput("Enter the brand of the electronic product: ");
+                    String warrantyDuration = getUSerInput("Enter the warranty duration of the electronic product: ");
+                    int no_of_available_items = Integer.parseInt(getUSerInput("Enter the number of available no of products: "));
+                    yield new Electronics(productID, name, no_of_available_items, price, brand, warrantyDuration);
+                }
+                case 2 ->
+                {
+                    String size = getUSerInput("Enter the size of the clothing: ");
+                    int no_of_available_items = Integer.parseInt(getUSerInput("Enter the number of available no of products: "));
+                    String color = getUSerInput("Enter the color of the product: ");
+                    yield new Clothing(productID, name, no_of_available_items, price, size, color);
+                }
+                default -> null;
+            };
+        }
+        catch (NumberFormatException e)
+        {
+            System.out.println("Invalid input for number of available items. Please enter a valid integer.");
+            return null; // Or handle it accordingly based on your application's requirements
+        }
     }
 
 
@@ -325,7 +346,9 @@ public class WestminsterShoppingManager implements ShoppingManager
                 }
             }
             System.out.println("Product data loaded from CSV: " + product_details_file);
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             System.out.println("CSV file not found: " + product_details_file);
         }
     }
