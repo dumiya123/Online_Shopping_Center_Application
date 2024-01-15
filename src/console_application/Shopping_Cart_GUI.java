@@ -1,6 +1,7 @@
 package console_application;
 
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,14 +17,8 @@ public class Shopping_Cart_GUI extends JFrame
 
     public Shopping_Cart_GUI()
     {
-        String[] columnNames = {"Product", "Size", "Color", "Quantity", "Price"};
-        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-
-        // Add some data to the table model
-        Object[] row1 = {"B201", "M", "Black", 2, 45.80};
-        Object[] row2 = {"B001", "S", "White", 1, 39.99};
-        model.addRow(row1);
-        model.addRow(row2);
+        String[] columnNames = {"Product", "Quantity", "Price"};
+        DefaultTableModel model = new DefaultTableModel(ShoppingCart.getProducts(), columnNames);
 
         // Create the table using the table model
         JTable table = new JTable(model);
@@ -35,14 +30,13 @@ public class Shopping_Cart_GUI extends JFrame
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
         table.getColumnModel().getColumn(1).setPreferredWidth(60);
         table.getColumnModel().getColumn(2).setPreferredWidth(80);
-        table.getColumnModel().getColumn(3).setPreferredWidth(60);
-        table.getColumnModel().getColumn(4).setPreferredWidth(80);
 
         // Create the scroll pane and add the table to it
         JScrollPane scrollPane = new JScrollPane(table);
 
         // Create the label
-        JLabel label_one = new JLabel("Total");
+        String total = String.format("Total\t\t\t%.2f", ShoppingCart.calculate_total_cost());
+        JTextArea label_one = new JTextArea(total);
 
         // Set the frame's layout manager to GridBagLayout
         setLayout(new GridBagLayout());
@@ -84,5 +78,6 @@ public class Shopping_Cart_GUI extends JFrame
         SwingUtilities.invokeLater(() -> new Shopping_Cart_GUI());
     }
 }
+
 
 

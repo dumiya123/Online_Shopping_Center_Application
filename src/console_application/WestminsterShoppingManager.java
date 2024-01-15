@@ -7,14 +7,12 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-
 /*
  COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
  Object-Oriented Programming Coursework L5 sem 1
  @author Dumindu Induwara Gamage.
  @version 1 Console application.
  */
-
 
 /**
  * This class contains main method of the program .
@@ -26,8 +24,7 @@ public class WestminsterShoppingManager implements ShoppingManager
     private final int maximum_products = 50;
     private static final String product_details_file="product_data.csv";  //create a file to store
     public static ArrayList<Product> products = new ArrayList<Product>();
-    private static  final WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
-
+    public static  final WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
 
     /**
      * main method of the program.
@@ -108,14 +105,15 @@ public class WestminsterShoppingManager implements ShoppingManager
     }
 
     /**
-     * add_Product() method will add a product to the system.
+     *The add_Product method is responsible for adding a product to the system.
+     *@throws  NumberFormatException If there is an error parsing numeric input for product type or price.
      */
 
     public void add_Product()
     {
         try
         {
-            if (products.size() > maximum_products)
+            if (products.size() > maximum_products)  // Checking if the maximum number of products has been reached
             {
                 System.out.println("Cannot add more products. Maximum products limit reached.");
                 return;
@@ -129,8 +127,11 @@ public class WestminsterShoppingManager implements ShoppingManager
 
             // Creating a product based on the user input.
             Product product = createProduct(productType, productID, name, price);
+
+            //Checking whether the product creation was successful.
             if (product != null)
             {
+                //if it is true add the particular product to the list.
                 products.add(product);
                 System.out.println();
                 System.out.println("Product added successfully.");
@@ -138,36 +139,44 @@ public class WestminsterShoppingManager implements ShoppingManager
         }
         catch (NumberFormatException e)
         {
+            // Handling invalid input format for numbers
             System.out.println("Error: Invalid input format. Please enter a valid number for price or product type.");
         }
         catch (Exception e)
         {
+            //this will handle all other exceptions
             System.out.println("Error: " + e);
         }
     }
 
+    /**
+     *Show_details_of_product() will show the product details to the manager.
+     *After  add a product to the arraylist he or she can see the details of the products using this method.
+     */
     public void Show_details_of_product()
     {
         System.out.println("-------------------------------------------------------------------------------------");
         System.out.println("| PRODUCT ID  | PRODUCT NAME   | PRODUCT TYPE   | NO OF PIECES AVAILABLE  | PRICE   |");
         System.out.println("-------------------------------------------------------------------------------------");
 
-        if (products.isEmpty())
+        if (products.isEmpty()) //check if the list of product is empty.
         {
-            System.out.println(" No products available. Please add the products and check.|");
+            System.out.println(" No products available. Please add the products and check.");
         }
         else
         {
-            for (Product product : products)
+            for (Product product : products)  // Iterating through each product in the list
             {
-                String productType = "No type";
-                if( product.getProductType() == 1 )
+                String productType = "No type";  // Setting a default value for productType.
+                if( product.getProductType() == 1 )  // Mapping numeric product types to corresponding string names.
                 {
                     productType = "Electronics";
                 } else if ( product.getProductType() == 2 )
                 {
                     productType = "Clothing";
                 }
+
+                // Displaying product details in a formatted table row
                 System.out.printf("| %-12s| %-15s| %-15s| %-24s| %-8s|%n",
                         product.getProductID(),
                         product.getName_of_product(),
@@ -179,30 +188,35 @@ public class WestminsterShoppingManager implements ShoppingManager
         System.out.println("--------------------------------------------------------------------------------------");
     }
 
-
-    // Method to delete a product by product ID
+    /**
+     *The deleteProduct method allows the user to remove a product from the ArrayList based on its ID.
+     * This method handles potential exceptions, such as invalid input format, and provides appropriate
+     *error messages in case of an exception.
+     * @throws InputMismatchException If there is an error in the input format for the product ID.
+     */
     public void deleteProduct()
     {
         try
         {
-            String productId = getUSerInput("Enter the product ID to Delete: ");
+            String productId = getUSerInput("Enter the product ID to Delete: ");  // Getting user input for the product ID to delete
 
-            Iterator<Product> iterator = products.iterator();
+            Iterator<Product> iterator = products.iterator(); // Using an iterator to traverse the list of products
             boolean productFound = false;
 
-            while (iterator.hasNext())
+
+            while (iterator.hasNext()) // Iterating through the products list to find and delete the specified product
             {
                 Product product = iterator.next();
                 if (productId.equals(product.getProductID()))
                 {
-                    iterator.remove();
+                    iterator.remove(); //remove the product from the list
                     productFound = true;
                     System.out.println("Product deleted successfully.");
-                    break;
+                    break; // Exiting the loop once the product is found and deleted
                 }
             }
 
-            if (!productFound)
+            if (!productFound)  //show a message if the specific product was unable to find.
             {
                 System.out.println("Product not found with ID: " + productId);
             }
@@ -210,18 +224,20 @@ public class WestminsterShoppingManager implements ShoppingManager
         }
         catch (InputMismatchException e)
         {
+            // Handling invalid input format
             System.out.println("Invalid input.Please enter a valid Product ID.");
         }
 
     }
 
     /**
-     * Create a separate method to create a Product
-     * @param productType  type of the product.
-     * @param productID
-     * @param name
-     * @param price
-     * @return
+     * Creates a new product based on the specified product type and details.
+     * @param productType  An integer representing the type of the product (1 for Electronics, 2 for Clothing).
+     * @param productID   The unique identifier for the product
+     * @param name      The name of the product.
+     * @param price    The price of the product.
+     * @return         A new product instance based on the provided details, or null if the input is invalid.
+     * @throws        NumberFormatException If there is an error parsing the number of available items.
      */
 
     //String productID, String name_of_product, String no_of_available_items, double price, String brand, int warranty_duration
@@ -270,30 +286,39 @@ public class WestminsterShoppingManager implements ShoppingManager
         return scanner.nextLine();
     }
 
+    /**
+     * The Show_GUI method is responsible for displaying the graphical user interface (GUI) in a separate thread.
+     */
+
     public void Show_GUI()
     {
         // Run GUI in a separate thread
         SwingUtilities.invokeLater(() -> {
             GUIHome GUI = new GUIHome();
-            GUI.setVisible(true);
+//            GUI.setVisible(true);
         });
     }
+
+    /**
+     * The saveToFile method is responsible for saving product details to a CSV file.
+     * It utilizes a FileWriter to write product information to the specified file in CSV format.
+     */
 
     public void saveToFile()
     {
         try (FileWriter fileWriter = new FileWriter(product_details_file))
         {
-            fileWriter.write("ProductType,ProductId,ProductName,AvailableItems,Price,AdditionalInfo1,AdditionalInfo2\n");
+            fileWriter.write("ProductType,ProductId,ProductName,AvailableItems,Price,AdditionalInfo1,AdditionalInfo2\n");   // Writing headers to the CSV file
             for (Product product : products)
             {
-                if (product instanceof Electronics electronics)
+                if (product instanceof Electronics electronics)  //This line checks if the product is an instance of the Electronics class
                 {
-                    fileWriter.write(String.format("Electronics,%s,%s,%d,%.2f,%s,%s\n", electronics.getProductID(), electronics.getName_of_product(),
+                    fileWriter.write(String.format("Electronics,%s,%s,%d,%.2f,%s,%s\n", electronics.getProductID(), electronics.getName_of_product(), // Writing data for Electronics products
                             electronics.getAvailable_items(), electronics.getPrice(), electronics.getBrand(), electronics.getWarranty_duration()));
                 }
-                else if (product instanceof Clothing clothing)
+                else if (product instanceof Clothing clothing)  //This line checks if the product is an instance of the Electronic class
                 {
-                    fileWriter.write(String.format("Clothing,%s,%s,%d,%.2f,%s,%s\n", clothing.getProductID(), clothing.getName_of_product(),
+                    fileWriter.write(String.format("Clothing,%s,%s,%d,%.2f,%s,%s\n", clothing.getProductID(), clothing.getName_of_product(), // Writing data for Clothing products
                             clothing.getAvailable_items(), clothing.getPrice(), clothing.getSize(), clothing.getColour()));
                 }
             }
@@ -301,18 +326,20 @@ public class WestminsterShoppingManager implements ShoppingManager
         }
         catch (IOException e)
         {
-            System.out.println("Error while saving data: " + e);
+            System.out.println("Error while saving data: " + e); // Handling IOException during file writing
         }
     }
 
-    // Method to load products from a CSV file
+    /**
+     *The loadFromFile method is responsible for loading product details from a CSV file.
+     */
     public void loadFromFile()
     {
         products.clear(); // Clear existing data before loading from file
         try (Scanner scanner = new Scanner(new File(product_details_file)))
         {
             scanner.nextLine(); // Skip the header line
-            while (scanner.hasNextLine())
+            while (scanner.hasNextLine())  // Skip the header line
             {
                 String[] data = scanner.nextLine().split(",");
                 if (data.length >= 7)
@@ -351,10 +378,9 @@ public class WestminsterShoppingManager implements ShoppingManager
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("CSV file not found: " + product_details_file);
+            System.out.println("CSV file not found: " + product_details_file);// Handling FileNotFoundException during file reading
         }
     }
-
 
 
     // Helper method to create a product from CSV data
@@ -367,7 +393,6 @@ public class WestminsterShoppingManager implements ShoppingManager
             System.out.println("Invalid data format in CSV. Skipping line.");
             return null;
         }
-
         try
         {
             // Extracting data from CSV

@@ -108,19 +108,6 @@ public class GUIHome extends JFrame
         }
         panelBlue.add(lbAvailable);
 
-        //Purple Bottom Lower
-        JPanel panelPurple=new JPanel();
-        panelPurple.setPreferredSize(new Dimension(0,75));
-        panelPurple.setBackground(new Color(128,0,128));
-        panelOrange.add(panelPurple);
-
-        //Add to Shopping Cart Button
-        JButton addToCart=new JButton("Add to Shopping Cart");
-        panelPurple.setLayout(new FlowLayout(1,10,25));
-        panelPurple.add(addToCart);
-        addToCart.setPreferredSize(new Dimension(200,30));
-
-
 
         //Yellow Button - Shopping Cart
         JButton shoppingCart = new JButton("Shopping Cart");
@@ -140,32 +127,23 @@ public class GUIHome extends JFrame
         });
 
 
-
-
         //Green Table
         String[] column={"Product ID","Name","Category","Price(C)","Info"};
-//        String data[][]={{"A1000","TV","Electronics","299.39","Samsaung,12 weeks warranty"},{"A1000","TV","Electronics","299.39","Samsaung,12 weeks warranty"}};
-
-
-        DefaultTableModel model = new DefaultTableModel(column, 0);
-
-        for (Product i : WestminsterShoppingManager.products)
+        DefaultTableModel model = new DefaultTableModel(column,0);
+        String[] rowData = new String[5];
+        for(Product i:WestminsterShoppingManager.products)
         {
-            System.out.println(i);
-            String[] rowData = new String[5];  // Initialize rowData for each iteration
-
             rowData[0] = i.getProductID();
             rowData[1] = i.getName_of_product();
-
-            if (i instanceof Electronics)
+            if(i instanceof Electronics)
             {
-                rowData[2] = "Electronics";
-            } else {
-                rowData[2] = "Clothing";
+                rowData[2] ="Electronics";
             }
-
+            else{
+                rowData[2] ="Clothing";
+            }
             rowData[3] = String.valueOf(i.getPrice());
-            rowData[4] = i.getName_of_product();
+            rowData[4] = getProductInfo(i);
             model.addRow(rowData);
         }
         //model.setRowCount(5);
@@ -181,8 +159,34 @@ public class GUIHome extends JFrame
         panelGreen.add(scrollPane);
 
 
+        //Purple Bottom Lower
+        JPanel panelPurple=new JPanel();
+        panelPurple.setPreferredSize(new Dimension(0,75));
+        panelPurple.setBackground(new Color(128,0,128));
+        panelOrange.add(panelPurple);
+
+        //Add to Shopping Cart Button
+        JButton addToCart=new JButton("Add to Shopping Cart");
+        panelPurple.setLayout(new FlowLayout(1,10,25));
+        panelPurple.add(addToCart);
+        addToCart.setPreferredSize(new Dimension(200,30));
+        ShoppingCart cart=new ShoppingCart();
+        addToCart.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                int selectedRow = table.getSelectedRow();
+                String selectedProductID = (String) table.getValueAt(selectedRow, 0);
+                Product selectedProduct = findSelectedProduct(selectedProductID);
+                String quantity = JOptionPane.showInputDialog(GUIHome.this, "Enter Quantity");
+                cart.add_Product(selectedProduct, Integer.parseInt(quantity));
+            }
+        });
+
+
         JFrame frame=new JFrame("Application");
-        frame.setSize(750,750);
+        frame.setSize(1000,750);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
@@ -192,8 +196,24 @@ public class GUIHome extends JFrame
         frame.add(panelRed,BorderLayout.NORTH);
         frame.add(panelGreen,BorderLayout.CENTER);
         frame.add(panelOrange,BorderLayout.SOUTH);
-
-
-
+    }
+    public String getProductInfo(Product product) {
+        if (product instanceof Electronics) {
+            String info = ((Electronics) product).getBrand() + ", " + ((Electronics) product).getWarranty_duration();
+            return info;
+        }
+        else if (product instanceof Clothing) {
+            String info = ((Clothing) product).getSize() + ", " + ((Clothing) product).getColour();
+            return info;
+        }
+        return "No Info";
+    }
+    public Product findSelectedProduct(String productID) {
+        for (Product product : WestminsterShoppingManager.products) {
+            if (product.getProductID().equals(productID)) {
+                return product;
+            }
+        }
+        return null;
     }
 }

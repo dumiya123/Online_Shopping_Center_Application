@@ -1,16 +1,15 @@
 package console_application;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class ShoppingCart
 {
-    private List<Product> products;
+    private static HashMap<Product, Integer> products = new HashMap<>();
 
     public ShoppingCart()
     {
 
-        products=new ArrayList<Product>();
+        // products=new ArrayList<Product>();
 
     }
 
@@ -20,10 +19,10 @@ public class ShoppingCart
      *
      */
 
-    public void add_Product(Product product)
+    public void add_Product(Product product, int quantity)
     {
 
-        products.add(product);
+        products.put(product, quantity);
 
     }
 
@@ -39,17 +38,32 @@ public class ShoppingCart
 
     }
 
+    public static String[][] getProducts()
+    {
+        String[][] productsArray = new String[products.size()][5];
+        int i = 0;
+        for (Product product : products.keySet())
+        {
+            productsArray[i][0] = String.format("%s, %s", product.getProductID(), product.getName_of_product());
+            productsArray[i][1] = Integer.toString(ShoppingCart.products.get(product));
+            productsArray[i][2] = String.valueOf(product.getPrice());
+            i++;
+        }
+        return productsArray;
+    }
+
+
     /**
      * Declare a method to calculate the total cost
      */
 
-    public double calculate_total_cost()
+    public static double calculate_total_cost()
     {
         double total_cost=0.0;
-        for (Product product:products)
+        for (Product product: products.keySet())
         {
 
-            total_cost += product.getPrice();
+            total_cost += product.getPrice() * products.get(product);
 
         }
         return total_cost;
