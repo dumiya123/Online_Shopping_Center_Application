@@ -144,9 +144,30 @@ public class GUIHome extends JFrame
 
         //Green Table
         String[] column={"Product ID","Name","Category","Price(C)","Info"};
-        String data[][]={{"A1000","TV","Electronics","299.39","Samsaung,12 weeks warranty"},{"A1000","TV","Electronics","299.39","Samsaung,12 weeks warranty"}};
+//        String data[][]={{"A1000","TV","Electronics","299.39","Samsaung,12 weeks warranty"},{"A1000","TV","Electronics","299.39","Samsaung,12 weeks warranty"}};
 
-        DefaultTableModel model = new DefaultTableModel(data, column);
+
+        DefaultTableModel model = new DefaultTableModel(column, 0);
+
+        for (Product i : WestminsterShoppingManager.products)
+        {
+            System.out.println(i);
+            String[] rowData = new String[5];  // Initialize rowData for each iteration
+
+            rowData[0] = i.getProductID();
+            rowData[1] = i.getName_of_product();
+
+            if (i instanceof Electronics)
+            {
+                rowData[2] = "Electronics";
+            } else {
+                rowData[2] = "Clothing";
+            }
+
+            rowData[3] = String.valueOf(i.getPrice());
+            rowData[4] = i.getName_of_product();
+            model.addRow(rowData);
+        }
         //model.setRowCount(5);
         JTable table=new JTable(model);
 

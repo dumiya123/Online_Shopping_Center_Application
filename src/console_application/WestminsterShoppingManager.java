@@ -25,7 +25,7 @@ public class WestminsterShoppingManager implements ShoppingManager
 {
     private final int maximum_products = 50;
     private static final String product_details_file="product_data.csv";  //create a file to store
-    private ArrayList<Product> products = new ArrayList<Product>();
+    public static ArrayList<Product> products = new ArrayList<Product>();
     private static  final WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
 
 
