@@ -54,10 +54,10 @@ public class WestminsterShoppingManager implements ShoppingManager
                     case "D":
                         shoppingManager.deleteProduct();
                         break;
-                    case "E":
+                    case "S":
                         shoppingManager.saveToFile();
                         break;
-                    case "F":
+                    case "L":
                         shoppingManager.loadFromFile();
                         break;
                     case "G":
@@ -94,8 +94,8 @@ public class WestminsterShoppingManager implements ShoppingManager
                 A: ADD NEW PRODUCT.
                 B: SHOW PRODUCT DETAILS.
                 D: DELETE PRODUCT.
-                E: SAVE DETAILS IN TO A FILE.
-                F: LOAD DETAILS FROM THE FILE.
+                S: SAVE DETAILS IN TO A FILE.
+                L: LOAD DETAILS FROM THE FILE.
                 G: SHOW GRAPHICAL USER INTERFACE.
                 X: EXIT FROM THE SYSTEM.
                                          
