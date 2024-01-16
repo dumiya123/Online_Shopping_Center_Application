@@ -1,10 +1,3 @@
-package console_application;
-
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
 /*
  COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
  Object-Oriented Programming Coursework L5 sem 1
@@ -12,12 +5,20 @@ import javax.swing.table.DefaultTableModel;
  @version 2 GUI application.
  */
 
+package console_application;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 public class Shopping_Cart_GUI extends JFrame
 {
 
     public Shopping_Cart_GUI()
     {
+        // Define column names for the table
         String[] columnNames = {"Product", "Quantity", "Price"};
+        // Create a table model with initial data from ShoppingCart class
         DefaultTableModel model = new DefaultTableModel(ShoppingCart.getProducts(), columnNames);
 
         // Create the table using the table model
@@ -72,6 +73,11 @@ public class Shopping_Cart_GUI extends JFrame
 
 
     }
+
+    /**
+     * Main method to create and display the Shopping_Cart_GUI.
+     * @param args Command line arguments (not used).
+     */
 
     public static void main(String[] args)
     {

@@ -1,10 +1,25 @@
+/*
+ COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
+ Object-Oriented Programming Coursework L5 sem 1
+ @author Dumindu Induwara Gamage.
+ @version 1 console application.
+ */
+
 package console_application;
 
 import java.util.HashMap;
 
+/**
+ * The ShoppingCart class represents a shopping cart that can be used to store and manage products.
+ */
 public class ShoppingCart
 {
     private static HashMap<Product, Integer> products = new HashMap<>();
+
+
+    /**
+     * Constructs a new ShoppingCart object.
+     */
 
     public ShoppingCart()
     {
@@ -14,9 +29,10 @@ public class ShoppingCart
     }
 
     /**
+     * Adds a product with a specified quantity to the shopping cart.
      *
-     * Declare a method to add product to the cart.
-     *
+     * @param product  The product to be added.
+     * @param quantity The quantity of the product to be added.
      */
 
     public void add_Product(Product product, int quantity)
@@ -27,16 +43,21 @@ public class ShoppingCart
     }
 
     /**
-     * Declare a method to remove a product from cart.
-     * @param product
+     * Removes a specified product from the shopping cart.
+     *
+     * @param product The product to be removed.
      */
-
     public void remove_product(Product product)
     {
 
         products.remove(product);
 
     }
+
+    /**
+     * Retrieves an array representing the products in the shopping cart.
+     * @return A 2D array containing product information.
+     */
 
     public static String[][] getProducts()
     {
@@ -54,7 +75,8 @@ public class ShoppingCart
 
 
     /**
-     * Declare a method to calculate the total cost
+     * Calculates and returns the total cost of the products in the shopping cart.
+     * @return The total cost of the products in the shopping cart.
      */
 
     public static double calculate_total_cost()
@@ -71,7 +93,11 @@ public class ShoppingCart
 
     }
 
-
+    /**
+     * Sets the visibility of the shopping cart window.
+     *
+     * @param b True to set the window visible, false otherwise.
+     */
     public void setVisible(boolean b)
     {
 

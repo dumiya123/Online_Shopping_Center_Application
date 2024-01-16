@@ -38,6 +38,14 @@ public class Clothing extends Product
         this.colour = colour;
     }
 
+    @Override
+    public String toString() {
+        return "Clothing{" +
+                "size='" + size + '\'' +
+                ", colour='" + colour + '\'' +
+                '}';
+    }
+
     /**
      * getter for size of the clothing product.
      * @return size of the clothing product.

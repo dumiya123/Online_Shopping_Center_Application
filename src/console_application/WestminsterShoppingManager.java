@@ -1,3 +1,10 @@
+/*
+ COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
+ Object-Oriented Programming Coursework L5 sem 1
+ @author Dumindu Induwara Gamage.
+ @version 1 Console application.
+ */
+
 package console_application;
 
 import javax.swing.*;
@@ -7,24 +14,17 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/*
- COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
- Object-Oriented Programming Coursework L5 sem 1
- @author Dumindu Induwara Gamage.
- @version 1 Console application.
- */
-
 /**
  * This class contains main method of the program .
  * This class is responsible for managing all actions within the program.
  */
-
 public class WestminsterShoppingManager implements ShoppingManager
 {
+    // Constants for maximum number of products and the file to store product details
     private final int maximum_products = 50;
-    private static final String product_details_file="product_data.csv";  //create a file to store
-    public static ArrayList<Product> products = new ArrayList<Product>();
-    public static  final WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();
+    private static final String product_details_file="product_data.csv";  // File to store product details
+    public static ArrayList<Product> products = new ArrayList<Product>();  // ArrayList to store Product objects
+    public static  final WestminsterShoppingManager shoppingManager = new WestminsterShoppingManager();   // create a final class object of WestminsterShoppingManager as shoppingManager, it is static, so all methods including main() can access it.
 
     /**
      * main method of the program.
@@ -40,7 +40,7 @@ public class WestminsterShoppingManager implements ShoppingManager
                 shoppingManager.showMenu();
                 String usrInput = getUSerInput("Enter your Option:  ").toUpperCase();
 
-                switch (usrInput)
+                switch (usrInput)     // Switch statement to handle user's choice.
                 {
                     case "M":
                         shoppingManager.showMenu();
@@ -382,8 +382,13 @@ public class WestminsterShoppingManager implements ShoppingManager
         }
     }
 
+    /**
+     * Creates a Product object from a given array of CSV parts.
+     *
+     * @param parts Array of CSV parts representing product data.
+     * @return The created Product object, or null if invalid data format.
+     */
 
-    // Helper method to create a product from CSV data
     private Product createProductFromCSV(String[] parts)
     {
         // Check if there are enough parts to create a product
@@ -406,21 +411,24 @@ public class WestminsterShoppingManager implements ShoppingManager
             // Creating a product based on product type
             if ("ELECTRONICS".equalsIgnoreCase(productType))
             {
+                // Create Electronics product with a default Electronics Brand
                 return new Electronics(productId, name, price, "Electronics Brand");
             }
             else if ("CLOTHING".equalsIgnoreCase(productType))
             {
+                // Create Clothing product with default values for Clothing Size and Color
                 return new Clothing(productId, name, 0, price, "Clothing Size", "Color");
             }
             else
             {
-                System.out.println("Unknown product type: " + productType + ". Skipping line.");
+                System.out.println("Unknown product type: " + productType + ". Skipping line."); // Inform about unknown product type and skip line
                 return null;
             }
 
         }
         catch (NumberFormatException e)
         {
+            // Handle exception if there's an error parsing numeric values in CSV
             System.out.println("Error parsing numeric values in CSV. Skipping line.");
             return null;
         }
