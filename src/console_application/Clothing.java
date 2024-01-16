@@ -8,8 +8,8 @@ package console_application;
  */
 public class Clothing extends Product
 {
-    String size;
-    String colour;
+    private String size;
+    private String colour;
 
     /**
      * Default constructor for the Clothing class.

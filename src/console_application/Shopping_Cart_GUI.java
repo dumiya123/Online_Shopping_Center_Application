@@ -11,6 +11,10 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+
+/**
+ * Represents a simple shopping cart GUI application .
+ */
 public class Shopping_Cart_GUI extends JFrame
 {
 

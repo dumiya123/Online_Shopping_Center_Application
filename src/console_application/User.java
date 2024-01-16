@@ -30,7 +30,6 @@ public class User
      * @param username username of the user.
      * @param password password of the user.
      */
-
     public User(String username, String password)
     {
         this.username = username;
