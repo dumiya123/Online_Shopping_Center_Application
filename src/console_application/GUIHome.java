@@ -1,3 +1,10 @@
+/*
+ COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
+ Object-Oriented Programming Coursework L5 sem 1
+ @author Dumindu Induwara Gamage.
+ @version 2 GUI application.
+ */
+
 package console_application;
 
 import javax.swing.*;
@@ -6,21 +13,30 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
- COPYRIGHT (C) Dumindu Induwara Gamage-20221168-w1953846-dumindu.20221168@iit.ac.lk. All Rights Reserved.
- Object-Oriented Programming Coursework L5 sem 1
- @author Dumindu Induwara Gamage.
- @version 2 GUI application.
+
+/**
+ * The GUIHome class represents the main graphical user interface for the Westminster Shopping Center application.
+ * It extends JFrame to create a window for user interaction.
  */
 
 public class GUIHome extends JFrame
 {
+    // Declare labels as instance variables
+    private JLabel lbHead, lbId, lbName, lbCategory, lbAvailable, lbSize, lbColour, lbWarranty, lbBrand;
+
+    /**
+     * Constructs a new GUIHome object and initializes its components.
+     */
     public GUIHome()
     {
         setTitle("Westminster Shopping Center");
         initializeComponents();
 
     }
+
+    /**
+     * Initializes the graphical components of the GUI.
+     */
 
     private void initializeComponents()
     {
@@ -76,27 +92,25 @@ public class GUIHome extends JFrame
 
         //Label List
 
-        Label lbHead=new Label("Selected Product - Details");
-        Font newLabelFont=new Font("Arial",Font.BOLD,12);
-        lbHead.setFont(newLabelFont);
-        Label lbId=new Label("Product Id :");
-        Label lbName=new Label("Name :");
-        Label lbCategory=new Label("Category :");
-        Label lbAvailable=new Label("Items Available :");
 
-        Label lbSize=new Label("Size :");
-        Label lbColour=new Label("Colour :");
+        lbHead = new JLabel("Selected Product - Details");
+        lbHead.setFont(new Font("Arial", Font.BOLD, 12));
+        lbId = new JLabel("Product Id :");
+        lbName = new JLabel("Name :");
+        lbCategory = new JLabel("Category :");
+        lbAvailable = new JLabel("Items Available :");
+        lbSize = new JLabel("Size :");
+        lbColour = new JLabel("Colour :");
+        lbWarranty = new JLabel("Warranty :");
+        lbBrand = new JLabel("Brand :");
 
-        Label lbWarranty=new Label("Warranty :");
-        Label lbBrand=new Label("Brand :");
-
+        // Add these labels to the panelBlue
         panelBlue.add(lbHead);
         panelBlue.add(lbId);
         panelBlue.add(lbCategory);
         panelBlue.add(lbName);
 
-
-        if(true)
+        if (true)
         {
             panelBlue.add(lbBrand);
             panelBlue.add(lbWarranty);
@@ -196,21 +210,87 @@ public class GUIHome extends JFrame
         frame.add(panelRed,BorderLayout.NORTH);
         frame.add(panelGreen,BorderLayout.CENTER);
         frame.add(panelOrange,BorderLayout.SOUTH);
+        table.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting())
+            {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow != -1) {
+                    String selectedProductID = (String) table.getValueAt(selectedRow, 0);
+                    Product selectedProduct = findSelectedProduct(selectedProductID);
+                    updateLabels(selectedProduct);
+                }
+            }
+        });
     }
-    public String getProductInfo(Product product) {
-        if (product instanceof Electronics) {
+
+    /**
+     * Updates the labels with information from the selected product.
+     *
+     * @param selectedProduct The selected product.
+     */
+    private void updateLabels(Product selectedProduct)
+    {
+        lbId.setText("Product Id: " + selectedProduct.getProductID());
+        lbName.setText("Name: " + selectedProduct.getName_of_product());
+        lbCategory.setText("Category: " + (selectedProduct instanceof Electronics ? "Electronics" : "Clothing"));
+        lbAvailable.setText("Items Available: " + getProductInfo(selectedProduct));
+
+        if (selectedProduct instanceof Electronics)
+        {
+            lbBrand.setText("Brand: " + ((Electronics) selectedProduct).getBrand());
+            lbWarranty.setText("Warranty: " + ((Electronics) selectedProduct).getWarranty_duration());
+            lbSize.setText("Size: ");
+            lbColour.setText("Colour: ");
+        }
+        else if (selectedProduct instanceof Clothing)
+        {
+            lbSize.setText("Size: " + ((Clothing) selectedProduct).getSize());
+            lbColour.setText("Colour: " + ((Clothing) selectedProduct).getColour());
+            lbBrand.setText("Brand: ");
+            lbWarranty.setText("Warranty: ");
+        }
+        else
+        {
+            lbBrand.setText("Brand: ");
+            lbWarranty.setText("Warranty: ");
+            lbSize.setText("Size: ");
+            lbColour.setText("Colour: ");
+        }
+    }
+
+    /**
+     * Retrieves information about the product.
+     *
+     * @param product The product for which information is to be retrieved.
+     * @return A string containing information about the product.
+     */
+    public String getProductInfo(Product product)
+    {
+        if (product instanceof Electronics)
+        {
             String info = ((Electronics) product).getBrand() + ", " + ((Electronics) product).getWarranty_duration();
             return info;
         }
-        else if (product instanceof Clothing) {
+        else if (product instanceof Clothing)
+        {
             String info = ((Clothing) product).getSize() + ", " + ((Clothing) product).getColour();
             return info;
         }
         return "No Info";
     }
-    public Product findSelectedProduct(String productID) {
-        for (Product product : WestminsterShoppingManager.products) {
-            if (product.getProductID().equals(productID)) {
+
+    /**
+     * Finds and returns the product with the specified product ID.
+     *
+     * @param productID The product ID to search for.
+     * @return The product with the specified product ID, or null if not found.
+     */
+    public Product findSelectedProduct(String productID)
+    {
+        for (Product product : WestminsterShoppingManager.products)
+        {
+            if (product.getProductID().equals(productID))
+            {
                 return product;
             }
         }
