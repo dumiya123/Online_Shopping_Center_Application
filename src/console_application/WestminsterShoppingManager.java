@@ -68,7 +68,7 @@ public class WestminsterShoppingManager implements ShoppingManager
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Invalid choice.");
+                        System.out.println("SEEMS LIKE, YOU ARE ENTERING A WRONG MENU KEY.PLEASE CHECK IT AND TRY AGAIN.");
                 }
             }
            catch (Exception e)
